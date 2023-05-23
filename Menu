@@ -1,0 +1,110 @@
+# bank2
+银行的基本业务
+package 团队项目;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import javax.swing.*;
+
+
+public class Menu {
+    private JButton but1 = new JButton("基本储蓄业务"); // 按钮
+    private JButton but2 = new JButton("贷款理财业务");
+    private JButton but3 = new JButton("外汇业务");
+    private JButton but0 = new JButton("退出系统");
+
+
+
+
+    // private JLabel lab3 = new JLabel("请输入内容，完成操作。");
+
+    private JFrame frame = new JFrame("信息管理系统"); // 框架
+    private JFrame frame1 = new JFrame("显示信息");
+    File file = new File("新建文件.txt");// 注意：新建一个文件
+    public Menu() {
+        if (!file.exists()) {
+            try {
+                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));// 把一个实例的对象以文件的形式保存到磁盘上。        out.writeObject(has);
+                out.close();
+            } catch (IOException e) {
+            }
+        }
+        but1.addActionListener(new ActionListener() { // 增加，内部类//进行某项操作时触发功能
+            public void actionPerformed(ActionEvent e) {//用于接收操作事件的侦听器接口
+                if (e.getSource() == but1){
+                    try {
+                        new jiben();
+                    } catch (Exception e1) {
+
+                        e1.printStackTrace();
+                    }
+                    frame.setVisible(false);
+
+                }
+            }
+        });
+
+        but2.addActionListener(new ActionListener() { // 删除
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == but2){
+                    try {
+                        new dl();
+                    } catch (Exception e1) {
+
+                        e1.printStackTrace();
+                    }
+                    frame.setVisible(false);
+
+                }
+            }
+        });
+
+        but3.addActionListener(new ActionListener() { // 修改
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == but3){
+                    try {
+                        new wh();
+                    } catch (Exception e1) {
+
+                        e1.printStackTrace();
+                    }
+                    frame.setVisible(false);
+
+                }
+            }});
+
+
+
+        but0.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == but0) {
+                    frame.setVisible(false);
+                    new ActionHandle();
+                }
+            }
+        });
+        frame.setLayout(null);
+        but1.setBounds(100, 100, 150, 25);
+        but2.setBounds(100, 145, 150, 25);
+        but3.setBounds(100, 190, 150, 25);
+        but0.setBounds(100, 235, 150, 25); // setBounds(x,y,width,height);
+
+
+        frame.add(but1);
+        frame.add(but2);
+        frame.add(but3);
+        frame.add(but0);
+
+        frame.setSize(400, 500); // 页面大小
+        frame1.setBounds(200, 200, 400, 300);
+        frame.setLocation(300, 200);
+        frame.setVisible(true);
+        frame1.setVisible(false);
+    }
+
+}
+

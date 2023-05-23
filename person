@@ -1,0 +1,33 @@
+package 团队项目;
+
+
+
+import java.io.Serializable;
+
+
+public class Person implements Serializable {//使用Serializable类，可以使对象被序列化，用于持久化（保存）对象。
+    private String money;
+    private String qmoney;
+;
+    //public Person(){}
+    public Person(String money){
+        this.money=money;
+        this.qmoney=qmoney;
+
+    }
+    public void setMoney(String money){
+        this.money=money;
+    }
+    public String getMoney(){
+        return money;
+    }
+    public void setQmoney(String qmoney){
+        this.qmoney=qmoney;
+    }
+    public String getQmoney(){
+        return qmoney;
+    }
+
+}
+
+
